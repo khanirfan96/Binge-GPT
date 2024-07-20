@@ -1,11 +1,8 @@
-import './App.css';
+import "./App.css";
+import Body from "./body/Body";
 
 function App() {
-  return (
-    <div className='text-center text-3xl text-[red]'>
-      Hey Hi From NEw Irfan
-    </div>
-  );
+  return <Body />;
 }
 
 export default App;

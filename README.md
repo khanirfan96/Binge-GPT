@@ -1,7 +1,15 @@
 # binge-gpt
 
--Create-react-app
--Configured tailwind-css    
+- Create-react-app
+- Configured tailwind-css   
+- Header
+- Routing of app
+- Login Form
+- Sign up Form 
+- Form Validation (with useRef Hook)
+- useRef Hook
+- Firebase Setup
+- Create Sign-Up User Account
 
 # Features
 - Login/Sign Up

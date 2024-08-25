@@ -42,18 +42,24 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(auth.currentUser, {
             displayName: name.current.value,
-            photoURL: {User_LOGO},
+            photoURL: { User_LOGO },
           })
             .then(() => {
               // Profile updated!
               const { uid, email, displayName, photoURL } = auth.currentUser;
-              dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }));
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
             })
             .catch((error) => {
               // An error occurred
               setError(error.message);
             });
-          
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -82,10 +88,7 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img
-          src={Netflix_bg_LOGO}
-          alt="Netflix"
-        />
+        <img src={Netflix_bg_LOGO} alt="Netflix" />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}

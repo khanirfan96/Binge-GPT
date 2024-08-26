@@ -38,6 +38,10 @@
 - GPT Search Page
 - GPT Search Bar
 - (BONUS) (Multi-language Feature in our App)
+- Get Open AI api key
+- Get Search API call
+- fetched gptmoviesuggestion from tmdb
+- Memoization
 
 # Features
 - Login/Sign Up

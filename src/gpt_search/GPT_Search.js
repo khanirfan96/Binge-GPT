@@ -6,7 +6,7 @@ import { Netflix_bg_LOGO } from "../utils/constant";
 const GPT_Search = () => {
   return (
     <div>
-      <div className="absolute -z-10">
+      <div className="fixed -z-10">
         <img src={Netflix_bg_LOGO} alt="Netflix" />
       </div>
       <GPTSearchBar />

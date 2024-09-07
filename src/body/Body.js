@@ -13,17 +13,11 @@ const Body = () => {
       path: "/browse",
       element: <Browse />,
     },
-    // {
-    //     path:'/',
-    //     element: <Body />
-    // },
   ]);
 
   return (
     <div>
       <RouterProvider router={appRouter} />
-      {/* <Login />
-      <Browse /> */}
     </div>
   );
 };

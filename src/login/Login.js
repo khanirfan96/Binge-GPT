@@ -1,15 +1,15 @@
-import React, { useRef, useState } from "react";
-import Header from "../header/Header";
-import { Validate } from "../utils/Validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { auth } from "../utils/Firebase";
+import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
+import Header from "../header/Header";
+import { auth } from "../utils/Firebase";
+import { Validate } from "../utils/Validate";
+import { Netflix_bg_LOGO } from "../utils/constant";
 import { addUser } from "../utils/userSlice";
-import { User_LOGO, Netflix_bg_LOGO } from "../utils/constant";
 
 const Login = () => {
   const [isSign, setIsSign] = useState(true);
@@ -40,19 +40,21 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          updateProfile(auth.currentUser, {
+          updateProfile(user, {
             displayName: name.current.value,
-            photoURL: { User_LOGO },
           })
             .then(() => {
+              // After profile is updated, reload the user to get the latest data
+              return auth.currentUser.reload();
+            })
+            .then(() => {
               // Profile updated!
-              const { uid, email, displayName, photoURL } = auth.currentUser;
+              const { uid, email, displayName } = auth.currentUser;
               dispatch(
                 addUser({
                   uid: uid,
                   email: email,
                   displayName: displayName,
-                  photoURL: photoURL,
                 })
               );
             })
@@ -73,9 +75,6 @@ const Login = () => {
         email.current.value,
         password.current.value
       )
-        .then((userCredential) => {
-          const user = userCredential.user;
-        })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;

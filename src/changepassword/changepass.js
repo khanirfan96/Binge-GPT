@@ -16,9 +16,8 @@ const ChangePassword = ({ openDialog, setOpenDialog }) => {
 
     const handlePasswordChange = (event) => {
         event.preventDefault()
-        // Handle the password change logic here
         if (newpassword.current.value !== confirmpassword.current.value) {
-            return toast.error('Password is not match');
+            return toast.error('Password did not match');
         }
         updatePassword(user, newpassword.current.value).then(() => {
             // password update successfully.

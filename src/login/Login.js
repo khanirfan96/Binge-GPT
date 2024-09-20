@@ -10,6 +10,8 @@ import { auth } from "../utils/Firebase";
 import { Validate } from "../utils/Validate";
 import { Netflix_bg_LOGO } from "../utils/constant";
 import { addUser } from "../utils/userSlice";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const [isSign, setIsSign] = useState(true);
@@ -36,7 +38,8 @@ const Login = () => {
       createUserWithEmailAndPassword(
         auth,
         email.current.value,
-        password.current.value
+        password.current.value,
+        toast.success('Profile Created successfully!')
       )
         .then((userCredential) => {
           const user = userCredential.user;
@@ -67,18 +70,21 @@ const Login = () => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setError(errorCode + " - " + errorMessage);
+          toast.success(errorMessage)
         });
     } else {
       // Sign In Logic
       signInWithEmailAndPassword(
         auth,
         email.current.value,
-        password.current.value
+        password.current.value,
+        toast.success("Login successfully!")
       )
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setError(errorCode + " - " + errorMessage);
+          toast.success(errorMessage)
         });
     }
   };
@@ -130,6 +136,7 @@ const Login = () => {
             : "Already Binge member Sign in now"}
         </p>
       </form>
+      <ToastContainer />
     </div>
   );
 };

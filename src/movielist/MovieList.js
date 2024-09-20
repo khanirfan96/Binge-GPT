@@ -7,7 +7,6 @@ const MovieList = ({ title, movies }) => {
 
   const openTrailer = () => {
     setOpenDialog(true);
-    console.log('hereeee')
   }
 
   return (

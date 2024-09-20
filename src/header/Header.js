@@ -8,6 +8,8 @@ import { changeLanguage } from "../utils/configSlice";
 import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constant";
 import { toggleGptSearchView } from "../utils/gptSlice";
 import { addUser, removeUser } from "../utils/userSlice";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -46,6 +48,7 @@ const Header = () => {
       .catch((error) => {
         // An error happened.
         navigate("/error");
+        toast.success('Sign out Succesfully!')
       });
   };
 
@@ -64,6 +67,10 @@ const Header = () => {
   const handlePasswordChange = () => {
     setOpenDialog(true);
   };
+
+  function getFirstChars(str) {
+    return (str ? str.split(' ').map(word => word.charAt(0)).join('') : 'G');
+  }
 
   return (
     <>
@@ -91,7 +98,7 @@ const Header = () => {
               {showGptSearch ? "Homepage" : "GPT Search"}
             </button>
             <div className="w-10 h-10 rounded-3xl bg-red-600">
-              <div className="text-white text-3xl text-center font-bold cursor-pointer" onClick={toggleDropdown}>{user.displayName.charAt(0)}</div>
+              <div className="text-white text-3xl text-center font-bold cursor-pointer" onClick={toggleDropdown}>{getFirstChars(user.displayName)}</div>
             </div>
             {isOpen && (
               <div className="absolute right-4 mt-[115px] w-30 bg-red-600 z-10 rounded-md">
@@ -117,6 +124,7 @@ const Header = () => {
 
       </div>
       <ChangePassword openDialog={openDialog} setOpenDialog={setOpenDialog} />
+      <ToastContainer />
     </>
   );
 };

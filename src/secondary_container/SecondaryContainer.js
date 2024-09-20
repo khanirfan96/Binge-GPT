@@ -4,7 +4,6 @@ import MovieList from "../movielist/MovieList";
 
 const SecondaryContainer = () => {
   const movies = useSelector((store) => store.movies);
-  console.log(movies, 'moiiiiiii')
 
 // fetch('https://api.themoviedb.org/3/movie/519182/videos?language=en-US', options)
 // .then(response => response.json())
@@ -13,7 +12,6 @@ const SecondaryContainer = () => {
 
 const openTrailer = () => {
   // setOpenDialog(true);
-  console.log('hereeee')
 }
 
   return (

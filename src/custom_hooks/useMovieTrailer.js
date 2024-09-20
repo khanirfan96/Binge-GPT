@@ -8,8 +8,6 @@ const useMovieTrailer = async () => {
 
     const movies = useSelector((store) => store.movies);
     const id = movies.id
-    console.log(id, 'id')
-
     const data = await fetch(
         // https://api.themoviedb.org/3/movie/519182/videos?language=en-US
         "https://api.themoviedb.org/3/movie/" +
